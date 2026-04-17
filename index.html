@@ -5,54 +5,164 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Applied Method Systems | Industrial & Technical Sales Solutions</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .hero-bg {
+    background-image:
+      linear-gradient(rgba(9, 31, 92, 0.72), rgba(20, 52, 146, 0.74)),
+      url('https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1800&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+</style>
 </head>
-<body class="text-gray-900 bg-white antialiased">
-  <header class="bg-gradient-to-r from-blue-700 to-blue-900 h-screen flex items-center justify-center text-center">
-    <div class="max-w-3xl px-4">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Applied Method Systems LLC</h1>
-      <p class="text-lg md:text-2xl text-blue-100 leading-relaxed mb-6">Expert-led process design built through discovery, executed through custom AI-enabled workflow apps.</p>
-      <a href="#contact" class="inline-block px-8 py-3 text-lg font-medium bg-white text-blue-800 rounded-lg shadow-lg hover:bg-gray-100 transition-colors duration-300">Get In Touch</a>
+<body class="bg-slate-950 text-slate-900 antialiased">
+  <header class="hero-bg text-white">
+    <div class="mx-auto flex min-h-[78vh] max-w-7xl items-center px-6 py-20 lg:px-10">
+      <div class="grid w-full gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div>
+          <div class="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-blue-100 backdrop-blur">
+            Industrial workflow systems for technical and equipment sales
+          </div>
+          <h1 class="max-w-4xl text-5xl font-extrabold leading-tight tracking-tight md:text-6xl lg:text-7xl">
+            Applied Method Systems LLC
+          </h1>
+          <p class="mt-6 max-w-3xl text-lg leading-8 text-blue-50 md:text-2xl md:leading-10">
+            Expert-led process design built through discovery, executed through custom AI-enabled workflow apps that streamline handoffs, improve decision quality, and reduce friction across siloed teams.
+          </p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a href="#contact" class="inline-flex items-center justify-center rounded-xl bg-white px-7 py-4 text-base font-semibold text-blue-900 shadow-xl transition hover:bg-blue-50">
+              Start a Conversation
+            </a>
+            <a href="tel:+17162745169" class="inline-flex items-center justify-center rounded-xl border border-white/30 bg-white/10 px-7 py-4 text-base font-semibold text-white backdrop-blur transition hover:bg-white/15">
+              Call 716-274-5169
+            </a>
+          </div>
+        </div>
+        <div class="rounded-3xl border border-white/15 bg-slate-950/45 p-6 shadow-2xl backdrop-blur md:p-8">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-5">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-100">Focus</p>
+              <p class="mt-3 text-xl font-semibold text-white">Workflow design</p>
+              <p class="mt-2 text-sm leading-6 text-blue-100">Process clarity across sales, engineering, operations, and purchasing.</p>
+            </div>
+            <div class="rounded-2xl bg-white/10 p-5">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-100">Output</p>
+              <p class="mt-3 text-xl font-semibold text-white">AI-enabled tools</p>
+              <p class="mt-2 text-sm leading-6 text-blue-100">Practical applications that remove steps, reduce errors, and tighten decisions.</p>
+            </div>
+            <div class="rounded-2xl bg-white/10 p-5 sm:col-span-2">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-blue-100">Contact</p>
+              <div class="mt-3 space-y-2 text-base text-white">
+                <p><span class="font-semibold">Email:</span> adam@newworkingorder.com</p>
+                <p><span class="font-semibold">Phone:</span> 716-274-5169</p>
+                <p><span class="font-semibold">Location:</span> East Aurora, New York</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
-  <main>
-    <section id="about" class="py-16 px-6 bg-gray-50">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-semibold mb-4 text-blue-900">About Us</h2>
-        <p class="text-lg leading-relaxed text-gray-700">Applied Method Systems helps manufacturers make better technical, operational, and equipment purchasing decisions through expert-led process design, discovery, and focused AI-enabled workflow apps that streamline work across siloed departments.</p>
-      </div>
-    </section>
-    <section id="solutions" class="py-16 px-6">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-semibold mb-8 text-blue-900">Solutions</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <div class="text-blue-600 text-3xl mb-4">Process Design</div>
-            <p>We shape the right process through discovery so technical sales, quoting, and operational workflows become faster, cleaner, and more reliable.</p>
+
+  <main class="bg-slate-50">
+    <section id="about" class="px-6 py-20 lg:px-10">
+      <div class="mx-auto max-w-6xl rounded-3xl bg-white p-10 shadow-sm ring-1 ring-slate-200 lg:p-14">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-700">About</p>
+            <h2 class="mt-4 text-4xl font-bold tracking-tight text-slate-900">A more disciplined way to solve technical sales and workflow problems.</h2>
           </div>
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <div class="text-blue-600 text-3xl mb-4">Workflow Apps</div>
-            <p>Custom AI-enabled apps remove steps, reduce handoff errors, and improve speed and accuracy across sales and manufacturing workflows.</p>
-          </div>
-          <div class="bg-white rounded-lg shadow-lg p-6">
-            <div class="text-blue-600 text-3xl mb-4">Technical Sales Solutions</div>
-            <p>We help manufacturers configure the right solution, improve quoting accuracy, and make stronger commercial and operational decisions.</p>
+          <div>
+            <p class="text-lg leading-8 text-slate-700">
+              Applied Method Systems helps manufacturers and industrial teams make better technical, operational, and equipment purchasing decisions through expert-led discovery, practical process design, and focused AI-enabled workflow applications.
+            </p>
+            <p class="mt-5 text-lg leading-8 text-slate-700">
+              The goal is not flashy software. The goal is tighter handoffs, fewer errors, cleaner execution, and better decisions across the people and departments that actually move work forward.
+            </p>
           </div>
         </div>
       </div>
     </section>
-    <section id="contact" class="py-16 px-6 bg-gray-50">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-semibold mb-8 text-blue-900">Contact Us</h2>
-        <form class="space-y-4">
-          <div><label class="block text-sm font-medium mb-1">Name</label><input class="w-full border border-gray-300 rounded-lg px-4 py-2" type="text"></div>
-          <div><label class="block text-sm font-medium mb-1">Email</label><input class="w-full border border-gray-300 rounded-lg px-4 py-2" type="email"></div>
-          <div><label class="block text-sm font-medium mb-1">Message</label><textarea class="w-full border border-gray-300 rounded-lg px-4 py-2 h-32"></textarea></div>
-          <button type="button" class="px-6 py-3 bg-blue-700 text-white rounded-lg">Send Message</button>
-        </form>
+
+    <section id="solutions" class="px-6 pb-20 lg:px-10">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-10 max-w-3xl">
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-700">Solutions</p>
+          <h2 class="mt-4 text-4xl font-bold tracking-tight text-slate-900">Built for real-world industrial complexity.</h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
+            <h3 class="text-2xl font-bold text-slate-900">Process Design</h3>
+            <p class="mt-4 text-base leading-7 text-slate-700">Map the real workflow, find the friction, and design a cleaner operating path that people can actually follow.</p>
+          </div>
+          <div class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
+            <h3 class="text-2xl font-bold text-slate-900">Workflow Apps</h3>
+            <p class="mt-4 text-base leading-7 text-slate-700">Deploy focused AI-enabled tools that reduce manual steps, improve speed, and tighten cross-functional execution.</p>
+          </div>
+          <div class="rounded-3xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
+            <h3 class="text-2xl font-bold text-slate-900">Technical Sales Solutions</h3>
+            <p class="mt-4 text-base leading-7 text-slate-700">Support better quoting, better equipment decisions, and more credible execution across complex technical buying cycles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-slate-900 px-6 py-20 text-white lg:px-10">
+      <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-300">Contact</p>
+          <h2 class="mt-4 text-4xl font-bold tracking-tight">Start with a direct conversation.</h2>
+          <p class="mt-5 max-w-xl text-lg leading-8 text-slate-300">
+            Tonight this form is wired to open your email client and draft a message directly to adam@newworkingorder.com, so there is at least a real working path instead of a dead button.
+          </p>
+          <div class="mt-8 space-y-4 text-lg text-slate-200">
+            <p><span class="font-semibold text-white">Email:</span> <a class="underline decoration-blue-400 underline-offset-4" href="mailto:adam@newworkingorder.com">adam@newworkingorder.com</a></p>
+            <p><span class="font-semibold text-white">Phone:</span> <a class="underline decoration-blue-400 underline-offset-4" href="tel:+17162745169">716-274-5169</a></p>
+            <p><span class="font-semibold text-white">Location:</span> East Aurora, New York</p>
+          </div>
+        </div>
+        <div class="rounded-3xl bg-white p-8 text-slate-900 shadow-2xl">
+          <form id="contact-form" class="space-y-5">
+            <div>
+              <label class="mb-2 block text-sm font-semibold text-slate-700" for="name">Name</label>
+              <input class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100" id="name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label class="mb-2 block text-sm font-semibold text-slate-700" for="email">Email</label>
+              <input class="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100" id="email" name="email" type="email" placeholder="you@company.com" required>
+            </div>
+            <div>
+              <label class="mb-2 block text-sm font-semibold text-slate-700" for="message">Message</label>
+              <textarea class="h-36 w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-600 focus:ring-2 focus:ring-blue-100" id="message" name="message" placeholder="Tell me what you are working on or where the process is breaking down." required></textarea>
+            </div>
+            <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-blue-700 px-6 py-3 text-base font-semibold text-white transition hover:bg-blue-800">
+              Draft Email
+            </button>
+            <p class="text-sm leading-6 text-slate-500">Next step: we can replace this with a true web form that sends without opening the email client.</p>
+          </form>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="py-8 bg-gray-900 text-gray-400 text-center"><p>&copy; 2026 Applied Method Systems LLC. All rights reserved.</p></footer>
+
+  <footer class="border-t border-slate-800 bg-slate-950 px-6 py-8 text-center text-sm text-slate-400 lg:px-10">
+    <p>&copy; 2026 Applied Method Systems LLC. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Website inquiry from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+      window.location.href = 'mailto:adam@newworkingorder.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
 </body>
 </html>
