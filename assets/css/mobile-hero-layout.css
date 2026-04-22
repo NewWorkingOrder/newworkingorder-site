@@ -35,8 +35,33 @@
   .hero-shell {
     min-height: auto;
     align-items: start;
-    padding-top: 28px;
+    padding-top: 0;
     padding-bottom: 48px;
+    margin-top: -240px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero-grid {
+    display: block;
+  }
+
+  .hero-copy {
+    padding: 24px 18px 0;
+    background: linear-gradient(180deg, rgba(5, 6, 7, 0) 0%, rgba(5, 6, 7, 0.22) 18%, rgba(5, 6, 7, 0.78) 48%, rgba(5, 6, 7, 1) 70%);
+  }
+
+  .hero-copy .kicker {
+    max-width: 320px;
+  }
+
+  .hero-copy h1,
+  .page-hero h1 {
+    font-size: clamp(2.9rem, 13vw, 4.6rem);
+  }
+
+  .hero-facts {
+    margin-top: 28px;
   }
 
   .page-hero {
@@ -45,10 +70,5 @@
 
   .page-hero .container {
     padding-top: 28px;
-  }
-
-  .hero-copy h1,
-  .page-hero h1 {
-    font-size: clamp(2.9rem, 13vw, 4.6rem);
   }
 }
