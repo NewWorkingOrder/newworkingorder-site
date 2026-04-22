@@ -29,15 +29,15 @@
 
   .hero .video-overlay,
   .page-hero .video-overlay {
-    background: linear-gradient(180deg, rgba(5, 6, 7, 0.06) 0%, rgba(5, 6, 7, 0.12) 68%, rgba(5, 6, 7, 0.22) 100%);
+    background: linear-gradient(180deg, rgba(5, 6, 7, 0.04) 0%, rgba(5, 6, 7, 0.08) 58%, rgba(5, 6, 7, 0.28) 78%, rgba(5, 6, 7, 0.74) 100%);
   }
 
   .hero-shell {
     min-height: auto;
     align-items: start;
     padding-top: 0;
-    padding-bottom: 48px;
-    margin-top: -240px;
+    padding-bottom: 42px;
+    margin-top: -340px;
     position: relative;
     z-index: 3;
   }
@@ -47,17 +47,39 @@
   }
 
   .hero-copy {
-    padding: 24px 18px 0;
-    background: linear-gradient(180deg, rgba(5, 6, 7, 0) 0%, rgba(5, 6, 7, 0.22) 18%, rgba(5, 6, 7, 0.78) 48%, rgba(5, 6, 7, 1) 70%);
+    padding: 22px 18px 0;
+    background: linear-gradient(180deg, rgba(5, 6, 7, 0) 0%, rgba(5, 6, 7, 0.18) 14%, rgba(5, 6, 7, 0.72) 38%, rgba(5, 6, 7, 0.96) 62%, rgba(5, 6, 7, 1) 100%);
   }
 
   .hero-copy .kicker {
     max-width: 320px;
   }
 
-  .hero-copy h1,
-  .page-hero h1 {
-    font-size: clamp(2.9rem, 13vw, 4.6rem);
+  .hero-copy h1 {
+    font-size: clamp(2.45rem, 11.5vw, 3.95rem);
+    margin-top: 16px;
+  }
+
+  .hero-copy .descriptor {
+    margin-top: 14px;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-copy .lead {
+    margin-top: 22px;
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .hero-copy .long-lead {
+    margin-top: 18px;
+    font-size: 0.98rem;
+    line-height: 1.82;
+  }
+
+  .hero-actions {
+    margin-top: 26px;
   }
 
   .hero-facts {
@@ -70,5 +92,9 @@
 
   .page-hero .container {
     padding-top: 28px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.9rem, 13vw, 4.6rem);
   }
 }
