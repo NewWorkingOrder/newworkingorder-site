@@ -106,15 +106,15 @@
   }
 
   .page-hero {
-    padding-bottom: 36px;
+    padding-bottom: 30px;
   }
 
   .page-hero .container {
     position: relative;
     z-index: 3;
     width: min(calc(100% - 28px), 360px);
-    margin: -500px auto 0;
-    padding: 20px 18px 0;
+    margin: -590px auto 0;
+    padding: 16px 18px 0;
     background: linear-gradient(180deg, rgba(5, 6, 7, 0.04) 0%, rgba(5, 6, 7, 0.14) 10%, rgba(5, 6, 7, 0.48) 28%, rgba(5, 6, 7, 0.82) 46%, rgba(5, 6, 7, 0.96) 64%, rgba(5, 6, 7, 1) 82%, rgba(5, 6, 7, 1) 100%);
   }
 
@@ -122,7 +122,7 @@
   .page-hero h1,
   .page-hero .descriptor {
     position: relative;
-    transform: translateY(-22px);
+    transform: none;
     z-index: 2;
   }
 
@@ -144,7 +144,7 @@
   }
 
   .page-hero .lead {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 1rem;
     line-height: 1.7;
     max-width: 21rem;
