@@ -27,9 +27,16 @@
     background: #000;
   }
 
-  .hero .video-overlay,
+  .hero .video-shell video {
+    filter: brightness(0.56) saturate(0.84) contrast(1.02);
+  }
+
+  .hero .video-overlay {
+    background: linear-gradient(180deg, rgba(5, 6, 7, 0.16) 0%, rgba(5, 6, 7, 0.28) 34%, rgba(5, 6, 7, 0.58) 64%, rgba(5, 6, 7, 0.9) 100%);
+  }
+
   .page-hero .video-overlay {
-    background: linear-gradient(180deg, rgba(5, 6, 7, 0.04) 0%, rgba(5, 6, 7, 0.08) 58%, rgba(5, 6, 7, 0.28) 78%, rgba(5, 6, 7, 0.74) 100%);
+    background: linear-gradient(180deg, rgba(5, 6, 7, 0.06) 0%, rgba(5, 6, 7, 0.12) 68%, rgba(5, 6, 7, 0.22) 100%);
   }
 
   .hero-shell {
@@ -37,7 +44,7 @@
     align-items: start;
     padding-top: 0;
     padding-bottom: 42px;
-    margin-top: -340px;
+    margin-top: -430px;
     position: relative;
     z-index: 3;
   }
@@ -47,8 +54,8 @@
   }
 
   .hero-copy {
-    padding: 22px 18px 0;
-    background: linear-gradient(180deg, rgba(5, 6, 7, 0) 0%, rgba(5, 6, 7, 0.18) 14%, rgba(5, 6, 7, 0.72) 38%, rgba(5, 6, 7, 0.96) 62%, rgba(5, 6, 7, 1) 100%);
+    padding: 20px 18px 0;
+    background: linear-gradient(180deg, rgba(5, 6, 7, 0) 0%, rgba(5, 6, 7, 0.34) 10%, rgba(5, 6, 7, 0.82) 32%, rgba(5, 6, 7, 0.97) 56%, rgba(5, 6, 7, 1) 100%);
   }
 
   .hero-copy .kicker {
@@ -57,17 +64,17 @@
 
   .hero-copy h1 {
     font-size: clamp(2.45rem, 11.5vw, 3.95rem);
-    margin-top: 16px;
+    margin-top: 14px;
   }
 
   .hero-copy .descriptor {
-    margin-top: 14px;
+    margin-top: 12px;
     font-size: 0.8rem;
     letter-spacing: 0.18em;
   }
 
   .hero-copy .lead {
-    margin-top: 22px;
+    margin-top: 20px;
     font-size: 1rem;
     line-height: 1.62;
   }
