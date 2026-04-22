@@ -28,19 +28,19 @@
   }
 
   .hero .video-shell video {
-    filter: brightness(0.6) saturate(0.86) contrast(1.02);
+    filter: brightness(0.58) saturate(0.76) contrast(0.98) blur(1.1px);
   }
 
   .page-hero .video-shell video {
-    filter: brightness(0.62) saturate(0.88) contrast(1.02);
+    filter: brightness(0.6) saturate(0.78) contrast(0.99) blur(1.05px);
   }
 
   .hero .video-overlay {
-    background: linear-gradient(180deg, rgba(5, 6, 7, 0.12) 0%, rgba(5, 6, 7, 0.24) 34%, rgba(5, 6, 7, 0.52) 64%, rgba(5, 6, 7, 0.86) 100%);
+    background: linear-gradient(180deg, rgba(12, 10, 8, 0.16) 0%, rgba(10, 9, 8, 0.26) 34%, rgba(6, 6, 7, 0.58) 64%, rgba(5, 6, 7, 0.88) 100%);
   }
 
   .page-hero .video-overlay {
-    background: linear-gradient(180deg, rgba(5, 6, 7, 0.12) 0%, rgba(5, 6, 7, 0.2) 18%, rgba(5, 6, 7, 0.42) 42%, rgba(5, 6, 7, 0.78) 66%, rgba(5, 6, 7, 0.96) 82%, rgba(5, 6, 7, 1) 100%);
+    background: linear-gradient(180deg, rgba(12, 10, 8, 0.14) 0%, rgba(10, 9, 8, 0.22) 18%, rgba(8, 7, 7, 0.46) 42%, rgba(5, 6, 7, 0.8) 66%, rgba(5, 6, 7, 0.96) 82%, rgba(5, 6, 7, 1) 100%);
   }
 
   .hero-shell {
@@ -148,5 +148,60 @@
     font-size: 1rem;
     line-height: 1.7;
     max-width: 21rem;
+  }
+}
+
+.video-shell video {
+  filter: brightness(0.68) saturate(0.78) contrast(0.98) blur(1.2px);
+  animation-duration: 42s;
+}
+
+.video-overlay {
+  background: linear-gradient(90deg, rgba(9, 8, 7, 0.66) 0%, rgba(8, 8, 7, 0.48) 34%, rgba(10, 9, 8, 0.32) 58%, rgba(9, 8, 7, 0.72) 100%),
+    linear-gradient(180deg, rgba(12, 10, 8, 0.22) 0%, rgba(10, 9, 8, 0.12) 28%, rgba(6, 6, 7, 0.82) 100%);
+}
+
+.hero .video-shell video {
+  filter: brightness(0.72) saturate(0.82) contrast(0.99) blur(1.4px);
+  animation-duration: 46s;
+}
+
+.video-section .video-shell video {
+  filter: brightness(0.62) saturate(0.76) contrast(0.98) blur(1.1px);
+  animation-duration: 42s;
+}
+
+.mission-video .video-shell video,
+.contact-video .video-shell video {
+  transform: scale(1.03);
+  animation-duration: 48s;
+}
+
+.page-hero .video-shell video {
+  filter: brightness(0.7) saturate(0.8) contrast(0.99) blur(1.15px);
+  animation-duration: 40s;
+}
+
+.hero-home .video-shell video {
+  transform: scale(1.08);
+  object-position: center 47%;
+}
+
+@keyframes ams-video-drift {
+  0% {
+    transform: scale(1.05) translate3d(-0.45%, 0, 0);
+  }
+  50% {
+    transform: scale(1.065) translate3d(0, 0.22%, 0);
+  }
+  100% {
+    transform: scale(1.05) translate3d(0.45%, -0.12%, 0);
+  }
+}
+
+@media (max-width: 1180px) {
+  .hero-home .video-shell video {
+    transform: scale(1.04);
+    object-position: center center;
   }
 }
