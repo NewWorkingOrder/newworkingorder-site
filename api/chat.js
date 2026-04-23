@@ -1,11 +1,46 @@
 module.exports = async function handler(request, response) {
-  if (request.method !== 'POST') {
-    response.setHeader('Allow', 'POST');
-    return response.status(405).json({ error: 'Method not allowed' });
-  }
-
   var tunnelBase = process.env.AMS_CONSOLE_TUNNEL_URL || '';
   var tunnelKey = process.env.AMS_CONSOLE_TUNNEL_KEY || '';
+
+  if (request.method === 'GET') {
+    if (!tunnelBase) {
+      return response.status(503).json({ ok: false, error: 'AMS Console backend not configured', envConfigured: false });
+    }
+
+    var healthTarget = tunnelBase.replace(/\/+$/, '') + '/health';
+
+    try {
+      var healthResponse = await fetch(healthTarget, {
+        method: 'GET',
+        headers: tunnelKey ? { 'x-ams-console-key': tunnelKey } : {}
+      });
+
+      var rawHealth = await healthResponse.text();
+      var parsedHealth = rawHealth;
+      try {
+        parsedHealth = JSON.parse(rawHealth);
+      } catch (error) {}
+
+      return response.status(200).json({
+        ok: true,
+        envConfigured: true,
+        upstreamStatus: healthResponse.status,
+        upstreamHealth: parsedHealth
+      });
+    } catch (error) {
+      return response.status(502).json({
+        ok: false,
+        envConfigured: true,
+        error: 'AMS Console backend unavailable',
+        details: String(error)
+      });
+    }
+  }
+
+  if (request.method !== 'POST') {
+    response.setHeader('Allow', 'GET, POST');
+    return response.status(405).json({ error: 'Method not allowed' });
+  }
 
   if (!tunnelBase) {
     return response.status(503).json({ error: 'AMS Console backend not configured' });
