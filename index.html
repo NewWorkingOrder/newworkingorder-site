@@ -18,7 +18,280 @@
     .flow-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
     .flow-grid .mini-card{padding:26px}
     .flow-grid .mini-card h3{max-width:none}
-    @media (max-width:1180px){.tier-grid,.flow-grid,.tool-grid-2x2{grid-template-columns:1fr}}
+
+    .hero-home .hero-copy h1{
+      max-width:8.35ch;
+      font-size:6.18rem;
+      line-height:.94;
+      letter-spacing:-.05em;
+      word-spacing:.03em;
+    }
+
+    .section-console{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .section-console::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at top left, rgba(184,155,97,.16), transparent 34%), radial-gradient(circle at bottom right, rgba(14,16,18,.08), transparent 30%);
+      pointer-events:none;
+    }
+
+    .section-console > .container{
+      position:relative;
+      z-index:1;
+    }
+
+    .console-shell{
+      display:grid;
+      grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+      gap:56px;
+      align-items:start;
+    }
+
+    .console-copy .section-title{
+      max-width:11.5ch;
+    }
+
+    .console-copy p{
+      max-width:38rem;
+    }
+
+    .console-topic-strip{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:30px;
+    }
+
+    .console-topic-strip span{
+      display:inline-flex;
+      align-items:center;
+      min-height:38px;
+      padding:0 14px;
+      border:1px solid var(--line-dark);
+      color:var(--text-dark);
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      background:rgba(255,255,255,.34);
+    }
+
+    .console-window{
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(10,11,13,.98) 0%, rgba(5,6,7,.98) 100%);
+      color:var(--text-strong);
+      box-shadow:0 32px 72px rgba(0,0,0,.24);
+      min-height:100%;
+    }
+
+    .console-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:18px 22px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+    }
+
+    .console-header-copy{
+      display:grid;
+      gap:3px;
+    }
+
+    .console-header-copy strong{
+      font-size:.84rem;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--text-strong);
+    }
+
+    .console-header-copy span,
+    .console-header-state{
+      font-size:.76rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(236,230,218,.56);
+    }
+
+    .console-header-state{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+    }
+
+    .console-dot{
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(184,155,97,.16);
+      flex-shrink:0;
+    }
+
+    .console-transcript{
+      display:grid;
+      gap:14px;
+      min-height:240px;
+      max-height:340px;
+      padding:22px;
+      overflow:auto;
+    }
+
+    .console-message{
+      max-width:92%;
+      border:1px solid rgba(255,255,255,.09);
+      padding:16px 18px;
+      background:rgba(255,255,255,.03);
+    }
+
+    .console-message-user{
+      justify-self:end;
+      background:rgba(184,155,97,.12);
+      border-color:rgba(184,155,97,.24);
+    }
+
+    .console-role{
+      margin-bottom:8px;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--accent);
+    }
+
+    .console-message p{
+      margin:0;
+      line-height:1.76;
+      color:rgba(245,239,228,.88);
+    }
+
+    .console-prompt-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      padding:0 22px 22px;
+    }
+
+    .console-prompt{
+      min-height:58px;
+      padding:14px 16px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.02);
+      color:var(--text-strong);
+      text-align:left;
+      font-size:.88rem;
+      line-height:1.45;
+      transition:border-color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .console-prompt:hover,
+    .console-prompt:focus-visible{
+      border-color:rgba(184,155,97,.42);
+      background:rgba(184,155,97,.08);
+      transform:translateY(-1px);
+    }
+
+    .console-input{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:12px;
+      padding:0 22px 18px;
+    }
+
+    .console-input input{
+      width:100%;
+      min-height:56px;
+      padding:0 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      color:var(--text-strong);
+    }
+
+    .console-input input::placeholder{
+      color:rgba(236,230,218,.42);
+    }
+
+    .console-input button{
+      min-width:120px;
+      min-height:56px;
+      padding:0 20px;
+      border:1px solid transparent;
+      background:var(--accent);
+      color:var(--text-dark);
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .console-input button:hover,
+    .console-input button:focus-visible{
+      background:var(--accent-soft);
+    }
+
+    .console-note{
+      padding:0 22px 22px;
+      color:rgba(236,230,218,.56);
+      font-size:.84rem;
+      line-height:1.72;
+    }
+
+    .console-note a{
+      color:var(--accent);
+    }
+
+    @media (max-width:1180px){
+      .tier-grid,.flow-grid,.tool-grid-2x2,.console-shell{grid-template-columns:1fr}
+      .console-copy .section-title{max-width:13ch}
+    }
+
+    @media (max-width:920px){
+      .console-prompt-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width:720px){
+      .hero-home .hero-copy h1{
+        max-width:8.5ch;
+        font-size:clamp(4rem,9vw,6rem);
+        line-height:.95;
+        letter-spacing:-.04em;
+        word-spacing:.02em;
+      }
+
+      .console-shell{
+        gap:34px;
+      }
+
+      .console-header,
+      .console-transcript,
+      .console-prompt-grid,
+      .console-input,
+      .console-note{
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .console-header{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .console-input{
+        grid-template-columns:1fr;
+      }
+
+      .console-input button{
+        width:100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -164,26 +437,46 @@
       </div>
     </section>
 
-    <section class="section-light">
-      <div class="container contact-grid">
-        <div class="contact-copy">
-          <div class="section-label">Next step</div>
-          <h2>Discuss the operating reality.</h2>
-          <p>Every engagement starts with what is actually happening inside the operation: the stalled decision, the unstable handoff, the quoting breakdown, the visibility gap, or the system that no longer fits the work.</p>
-          <p>From there, the answer can be designed at the right level, whether that means a focused workflow app, a connected workflow, departmental intelligence, or a broader architecture path.</p>
-          <div class="contact-list">
-            <a href="mailto:adam@newworkingorder.com"><strong>Email</strong>adam@newworkingorder.com</a>
-            <a href="tel:+17162745169"><strong>Phone</strong>716-274-5169</a>
-            <span><strong>Location</strong>East Aurora, New York</span>
+    <section class="section-light section-console">
+      <div class="container console-shell">
+        <div class="console-copy">
+          <div class="section-label">AMS Console</div>
+          <h2 class="section-title">A permanent digital interface for the public site.</h2>
+          <p>Use AMS Console to explore how Applied Method Systems thinks about workflow friction, handoffs, quoting breakdowns, technical sales support, manufacturing process improvement, and staged local AI architecture.</p>
+          <p>This interface is intentionally narrow. It is designed to explain the operating model, not imitate a generic support bot.</p>
+          <div class="console-topic-strip" aria-hidden="true">
+            <span>Workflow</span>
+            <span>Handoffs</span>
+            <span>Quoting</span>
+            <span>Architecture</span>
           </div>
         </div>
-        <div class="contact-card">
-          <div class="contact-direct">
-            <div class="meta"><strong>Start here</strong>Send the problem that keeps stalling progress.</div>
-            <div class="meta"><strong>What helps most</strong>A short description of the workflow, the friction point, and the decision that is getting delayed or degraded.</div>
-            <a href="contact.html" class="button">Open the Contact Page</a>
-            <a href="mailto:adam@newworkingorder.com" class="button-secondary">Email Adam Directly</a>
+        <div class="console-window" data-console-window>
+          <div class="console-header">
+            <div class="console-header-copy">
+              <strong>AMS Console</strong>
+              <span>Digital Interface</span>
+            </div>
+            <div class="console-header-state"><span class="console-dot"></span>Public site</div>
           </div>
+          <div class="console-transcript" id="ams-console-output" aria-live="polite">
+            <div class="console-message console-message-assistant">
+              <div class="console-role">AMS Console</div>
+              <p>Welcome to Applied Method Systems. Ask about workflow friction, handoffs, quoting, process design, tools, or local AI architecture.</p>
+            </div>
+          </div>
+          <div class="console-prompt-grid">
+            <button class="console-prompt" type="button" data-console-prompt="ams">What does AMS actually do?</button>
+            <button class="console-prompt" type="button" data-console-prompt="tools">What kinds of tools does AMS build?</button>
+            <button class="console-prompt" type="button" data-console-prompt="architecture">What does local AI architecture mean here?</button>
+            <button class="console-prompt" type="button" data-console-prompt="handoffs">How does AMS think about handoffs?</button>
+          </div>
+          <form class="console-input" id="ams-console-form">
+            <label class="sr-only" for="ams-console-field">Ask AMS Console a question</label>
+            <input id="ams-console-field" name="message" type="text" autocomplete="off" placeholder="Ask about workflow, handoffs, quoting, or architecture" />
+            <button type="submit">Send</button>
+          </form>
+          <div class="console-note">Public digital interface for Applied Method Systems. For direct discussions, <a href="contact.html">contact AMS</a>.</div>
         </div>
       </div>
     </section>
