@@ -74,6 +74,11 @@
       handoffs: 'AMS focuses heavily on the moments where information degrades between sales, service, engineering, operations, and purchasing. The objective is tighter handoffs, fewer avoidable touches, and cleaner execution across departments.'
     };
 
+    function clearTranscript() {
+      consoleOutput.innerHTML = '';
+      consoleOutput.scrollTop = 0;
+    }
+
     function addMessage(kind, label, text) {
       var wrapper = document.createElement('div');
       wrapper.className = 'console-message console-message-' + kind;
@@ -122,6 +127,7 @@
     }
 
     function respond(userText, directReply) {
+      clearTranscript();
       addMessage('user', 'You', userText);
       window.setTimeout(function () {
         addMessage('assistant', 'AMS Console', directReply || replyFor(userText));
