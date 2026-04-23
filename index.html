@@ -149,11 +149,9 @@
     }
 
     .console-transcript{
-      display:grid;
-      gap:14px;
       min-height:208px;
       max-height:300px;
-      padding:0;
+      padding:24px;
       overflow:auto;
       border:1px solid rgba(255,255,255,.08);
       background:rgba(255,255,255,.02);
@@ -161,19 +159,21 @@
     }
 
     .console-message{
-      max-width:88%;
-      margin:18px;
-      border:1px solid rgba(255,255,255,.09);
-      border-left:2px solid rgba(184,155,97,.46);
-      padding:16px 18px;
-      background:rgba(255,255,255,.025);
+      max-width:none;
+      margin:0;
+      padding:0;
+      border:none;
+      background:transparent;
+    }
+
+    .console-message + .console-message{
+      margin-top:22px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
     }
 
     .console-message-user{
-      justify-self:end;
-      border-left:1px solid rgba(255,255,255,.09);
-      border-right:2px solid rgba(184,155,97,.42);
-      background:rgba(184,155,97,.09);
+      justify-self:auto;
     }
 
     .console-role{
@@ -187,8 +187,10 @@
 
     .console-message p{
       margin:0;
-      line-height:1.76;
+      line-height:1.82;
       color:rgba(245,239,228,.88);
+      font-size:1.02rem;
+      max-width:54rem;
     }
 
     .console-prompt-grid{
@@ -300,6 +302,14 @@
 
       .console-header{
         gap:14px;
+      }
+
+      .console-transcript{
+        padding:18px;
+      }
+
+      .console-message p{
+        font-size:.96rem;
       }
 
       .console-prompt-grid,
