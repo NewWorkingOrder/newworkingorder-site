@@ -60,13 +60,18 @@
     attemptPlay();
   });
 
-  var consoleWindow = document.querySelector('[data-console-window]');
-  var consoleOutput = document.getElementById('ams-console-output');
-  var consoleForm = document.getElementById('ams-console-form');
-  var consoleField = document.getElementById('ams-console-field');
+  var drawer = document.getElementById('ams-console-drawer');
+  var drawerBackdrop = document.getElementById('ams-console-backdrop');
+  var drawerThread = document.getElementById('ams-console-thread');
+  var drawerForm = document.getElementById('ams-console-drawer-form');
+  var drawerField = document.getElementById('ams-console-drawer-field');
+  var launchForm = document.getElementById('ams-console-launch-form');
+  var launchField = document.getElementById('ams-console-launch-field');
+  var openButtons = document.querySelectorAll('[data-console-open]');
+  var closeButtons = document.querySelectorAll('[data-console-close]');
   var promptButtons = document.querySelectorAll('.console-prompt');
 
-  if (consoleWindow && consoleOutput && consoleForm && consoleField) {
+  if (drawer && drawerBackdrop && drawerThread && drawerForm && drawerField && launchForm && launchField) {
     var cannedResponses = {
       ams: 'Applied Method Systems helps manufacturers improve technical, operational, and equipment purchasing decisions through expert-led process design built through discovery and executed through custom AI-enabled workflow apps.',
       tools: 'Publicly, AMS describes configuration and quote apps, workflow and handoff apps, shared account context tools, and department assistants or local AI tools. The point is to remove friction, compress time, and reduce errors where the work actually breaks down.',
@@ -74,26 +79,27 @@
       handoffs: 'AMS focuses heavily on the moments where information degrades between sales, service, engineering, operations, and purchasing. The objective is tighter handoffs, fewer avoidable touches, and cleaner execution across departments.'
     };
 
-    function clearTranscript() {
-      consoleOutput.innerHTML = '';
-      consoleOutput.scrollTop = 0;
+    function openDrawer() {
+      drawer.classList.add('is-open');
+      drawerBackdrop.classList.add('is-open');
+      drawer.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('console-drawer-open');
     }
 
-    function addMessage(kind, label, text) {
-      var wrapper = document.createElement('div');
-      wrapper.className = 'console-message console-message-' + kind;
+    function closeDrawer() {
+      drawer.classList.remove('is-open');
+      drawerBackdrop.classList.remove('is-open');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('console-drawer-open');
+    }
 
-      var role = document.createElement('div');
-      role.className = 'console-role';
-      role.textContent = label;
-
-      var body = document.createElement('p');
-      body.textContent = text;
-
-      wrapper.appendChild(role);
-      wrapper.appendChild(body);
-      consoleOutput.appendChild(wrapper);
-      consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    function addMessage(kind, text) {
+      var bubble = document.createElement('div');
+      bubble.className = 'console-message console-message-' + kind;
+      bubble.textContent = text;
+      drawerThread.appendChild(bubble);
+      drawerThread.scrollIntoView({ block: 'end' });
+      drawerThread.parentElement.scrollTop = drawerThread.parentElement.scrollHeight;
     }
 
     function replyFor(text) {
@@ -125,34 +131,69 @@
       }
 
       if (compact.length < 8) {
-        return 'Try one of the prompts below.';
+        return 'Try one of the prompts or ask a workflow question.';
       }
 
       return 'Ask about workflow, handoffs, quoting, tools, or local AI architecture.';
     }
 
-    function respond(userText, directReply) {
-      clearTranscript();
-      addMessage('user', 'You', userText);
+    function handleMessage(text, directReply) {
+      if (!text) return;
+      openDrawer();
+      addMessage('user', text);
       window.setTimeout(function () {
-        addMessage('assistant', 'AMS Console', directReply || replyFor(userText));
+        addMessage('assistant', directReply || replyFor(text));
       }, 180);
     }
+
+    openButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        openDrawer();
+        window.setTimeout(function () {
+          drawerField.focus();
+        }, 120);
+      });
+    });
+
+    closeButtons.forEach(function (button) {
+      button.addEventListener('click', closeDrawer);
+    });
+
+    drawerBackdrop.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && drawer.classList.contains('is-open')) {
+        closeDrawer();
+      }
+    });
 
     promptButtons.forEach(function (button) {
       button.addEventListener('click', function () {
         var key = button.getAttribute('data-console-prompt') || '';
-        var label = button.textContent.trim();
-        respond(label, cannedResponses[key] || replyFor(label));
+        handleMessage(button.textContent.trim(), cannedResponses[key] || 'Ask about workflow, handoffs, quoting, tools, or local AI architecture.');
       });
     });
 
-    consoleForm.addEventListener('submit', function (event) {
+    launchForm.addEventListener('submit', function (event) {
       event.preventDefault();
-      var value = consoleField.value.trim();
+      var value = launchField.value.trim();
+      launchField.value = '';
+      if (!value) {
+        openDrawer();
+        window.setTimeout(function () {
+          drawerField.focus();
+        }, 120);
+        return;
+      }
+      handleMessage(value);
+    });
+
+    drawerForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var value = drawerField.value.trim();
+      drawerField.value = '';
       if (!value) return;
-      consoleField.value = '';
-      respond(value);
+      handleMessage(value);
     });
   }
 })();
