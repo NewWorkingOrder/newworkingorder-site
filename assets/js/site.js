@@ -98,6 +98,7 @@
 
     function replyFor(text) {
       var normalized = text.toLowerCase();
+      var compact = normalized.replace(/[^a-z0-9\s]/g, '').trim();
 
       if (normalized.indexOf('what does ams') !== -1 || normalized.indexOf('what do you do') !== -1 || normalized.indexOf('applied method systems') !== -1) {
         return cannedResponses.ams;
@@ -116,14 +117,18 @@
       }
 
       if (normalized.indexOf('crm') !== -1 || normalized.indexOf('erp') !== -1) {
-        return 'The public site says systems like CRM and ERP may still matter as systems of record, but they should stay in the background. AMS focuses on the working layer around the process, where context, coordination, and the next move matter most.';
+        return 'CRM and ERP can still matter as systems of record, but AMS focuses on the working layer around the process, where context, coordination, and the next move matter most.';
       }
 
       if (normalized.indexOf('contact') !== -1 || normalized.indexOf('email') !== -1 || normalized.indexOf('phone') !== -1) {
-        return 'For a direct discussion, the best next step is to use the Contact page or email adam@newworkingorder.com with the workflow, friction point, or decision problem that is getting delayed or degraded.';
+        return 'For a direct discussion, use the Contact page or email adam@newworkingorder.com with the workflow, friction point, or decision problem that is getting delayed or degraded.';
       }
 
-      return 'AMS Console is intentionally narrow on the public site. Ask about workflow friction, handoffs, quoting, tools, or local AI architecture, or go to Contact for a direct discussion.';
+      if (compact.length < 8) {
+        return 'Try one of the prompts below.';
+      }
+
+      return 'Ask about workflow, handoffs, quoting, tools, or local AI architecture.';
     }
 
     function respond(userText, directReply) {
