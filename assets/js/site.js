@@ -79,6 +79,8 @@
       handoffs: 'AMS focuses heavily on the moments where information degrades between sales, service, engineering, operations, and purchasing. The goal is tighter handoffs, fewer avoidable touches, and cleaner execution across departments.'
     };
 
+    var liveEndpoints = ['/api/chat', 'https://console-api.newworkingorder.com/chat'];
+
     function openDrawer() {
       drawer.classList.add('is-open');
       drawerBackdrop.classList.add('is-open');
@@ -137,40 +139,45 @@
       return 'Ask about workflow, handoffs, quoting, tools, or local AI architecture.';
     }
 
-    async function fetchLiveReply(text) {
-      try {
-        var response = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: text })
-        });
+    async function tryEndpoint(endpoint, text) {
+      var response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      });
 
-        var raw = await response.text();
+      var raw = await response.text();
 
-        if (!response.ok) {
-          throw new Error(raw || 'AMS Console backend unavailable');
-        }
-
-        if (!raw) {
-          throw new Error('Empty response');
-        }
-
-        try {
-          var parsed = JSON.parse(raw);
-          if (parsed && typeof parsed.reply === 'string' && parsed.reply.trim()) {
-            return parsed.reply.trim();
-          }
-          if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
-            return parsed.message.trim();
-          }
-        } catch (error) {
-          return raw.trim();
-        }
-
-        throw new Error('Invalid response payload');
-      } catch (error) {
-        return fallbackReply(text);
+      if (!response.ok) {
+        throw new Error(raw || 'AMS Console backend unavailable');
       }
+
+      if (!raw) {
+        throw new Error('Empty response');
+      }
+
+      try {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed.reply === 'string' && parsed.reply.trim()) {
+          return parsed.reply.trim();
+        }
+        if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
+          return parsed.message.trim();
+        }
+      } catch (error) {
+        return raw.trim();
+      }
+
+      throw new Error('Invalid response payload');
+    }
+
+    async function fetchLiveReply(text) {
+      for (var i = 0; i < liveEndpoints.length; i += 1) {
+        try {
+          return await tryEndpoint(liveEndpoints[i], text);
+        } catch (error) {}
+      }
+      return fallbackReply(text);
     }
 
     async function handleMessage(text, directReply) {
