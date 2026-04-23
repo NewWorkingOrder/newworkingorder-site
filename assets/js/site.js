@@ -74,9 +74,9 @@
   if (drawer && drawerBackdrop && drawerThread && drawerForm && drawerField && launchForm && launchField) {
     var cannedResponses = {
       ams: 'Applied Method Systems helps manufacturers improve technical, operational, and equipment purchasing decisions through expert-led process design built through discovery and executed through custom AI-enabled workflow apps.',
-      tools: 'Publicly, AMS describes configuration and quote apps, workflow and handoff apps, shared account context tools, and department assistants or local AI tools. The point is to remove friction, compress time, and reduce errors where the work actually breaks down.',
-      architecture: 'AMS uses a staged local architecture path: focused tools first, then connected workflows, then department intelligence, and shared company memory only when the operation is ready for that level of control.',
-      handoffs: 'AMS focuses heavily on the moments where information degrades between sales, service, engineering, operations, and purchasing. The objective is tighter handoffs, fewer avoidable touches, and cleaner execution across departments.'
+      tools: 'AMS builds focused tools such as configuration and quote apps, workflow and handoff apps, shared account context tools, and department assistants or local AI tools. The common thread is reducing friction, compressing time, reducing errors, and improving execution where the work actually breaks down.',
+      architecture: 'AMS uses a staged local architecture path. That means starting with focused tools first, then connected workflows, then department intelligence, and shared company memory only when the operation is ready for that level of control.',
+      handoffs: 'AMS focuses heavily on the moments where information degrades between sales, service, engineering, operations, and purchasing. The goal is tighter handoffs, fewer avoidable touches, and cleaner execution across departments.'
     };
 
     function openDrawer() {
@@ -102,7 +102,7 @@
       drawerThread.parentElement.scrollTop = drawerThread.parentElement.scrollHeight;
     }
 
-    function replyFor(text) {
+    function fallbackReply(text) {
       var normalized = text.toLowerCase();
       var compact = normalized.replace(/[^a-z0-9\s]/g, '').trim();
 
@@ -123,7 +123,7 @@
       }
 
       if (normalized.indexOf('crm') !== -1 || normalized.indexOf('erp') !== -1) {
-        return 'CRM and ERP can still matter as systems of record, but AMS focuses on the working layer around the process, where context, coordination, and the next move matter most.';
+        return 'AMS does not replace CRM or ERP. Those systems may still matter as systems of record, but AMS focuses on the working layer around the process.';
       }
 
       if (normalized.indexOf('contact') !== -1 || normalized.indexOf('email') !== -1 || normalized.indexOf('phone') !== -1) {
@@ -137,13 +137,48 @@
       return 'Ask about workflow, handoffs, quoting, tools, or local AI architecture.';
     }
 
-    function handleMessage(text, directReply) {
+    async function fetchLiveReply(text) {
+      try {
+        var response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
+        });
+
+        var raw = await response.text();
+
+        if (!response.ok) {
+          throw new Error(raw || 'AMS Console backend unavailable');
+        }
+
+        if (!raw) {
+          throw new Error('Empty response');
+        }
+
+        try {
+          var parsed = JSON.parse(raw);
+          if (parsed && typeof parsed.reply === 'string' && parsed.reply.trim()) {
+            return parsed.reply.trim();
+          }
+          if (parsed && typeof parsed.message === 'string' && parsed.message.trim()) {
+            return parsed.message.trim();
+          }
+        } catch (error) {
+          return raw.trim();
+        }
+
+        throw new Error('Invalid response payload');
+      } catch (error) {
+        return fallbackReply(text);
+      }
+    }
+
+    async function handleMessage(text, directReply) {
       if (!text) return;
       openDrawer();
       addMessage('user', text);
-      window.setTimeout(function () {
-        addMessage('assistant', directReply || replyFor(text));
-      }, 180);
+      var reply = directReply || await fetchLiveReply(text);
+      addMessage('assistant', reply);
     }
 
     openButtons.forEach(function (button) {
@@ -170,7 +205,7 @@
     promptButtons.forEach(function (button) {
       button.addEventListener('click', function () {
         var key = button.getAttribute('data-console-prompt') || '';
-        handleMessage(button.textContent.trim(), cannedResponses[key] || 'Ask about workflow, handoffs, quoting, tools, or local AI architecture.');
+        handleMessage(button.textContent.trim(), cannedResponses[key] || null);
       });
     });
 
