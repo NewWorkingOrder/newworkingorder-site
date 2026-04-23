@@ -79,6 +79,25 @@
       handoffs: 'AMS focuses heavily on the moments where information degrades between sales, service, engineering, operations, and purchasing. The goal is tighter handoffs, fewer avoidable touches, and cleaner execution across departments.'
     };
 
+    var formButtons = [];
+    var drawerSubmit = drawerForm.querySelector('button[type="submit"]');
+    var launchSubmit = launchForm.querySelector('button[type="submit"]');
+    if (drawerSubmit) formButtons.push(drawerSubmit);
+    if (launchSubmit) formButtons.push(launchSubmit);
+
+    function scrollThreadToBottom() {
+      drawerThread.scrollIntoView({ block: 'end' });
+      drawerThread.parentElement.scrollTop = drawerThread.parentElement.scrollHeight;
+    }
+
+    function setConsoleBusy(isBusy) {
+      drawerField.disabled = isBusy;
+      launchField.disabled = isBusy;
+      formButtons.forEach(function (button) {
+        button.disabled = isBusy;
+      });
+    }
+
     function openDrawer() {
       drawer.classList.add('is-open');
       drawerBackdrop.classList.add('is-open');
@@ -98,8 +117,35 @@
       bubble.className = 'console-message console-message-' + kind;
       bubble.textContent = text;
       drawerThread.appendChild(bubble);
-      drawerThread.scrollIntoView({ block: 'end' });
-      drawerThread.parentElement.scrollTop = drawerThread.parentElement.scrollHeight;
+      scrollThreadToBottom();
+    }
+
+    function addLoadingMessage() {
+      var bubble = document.createElement('div');
+      var dots = 0;
+      bubble.className = 'console-message console-message-assistant console-message-loading';
+      bubble.setAttribute('role', 'status');
+      bubble.setAttribute('aria-live', 'polite');
+      bubble.style.opacity = '0.92';
+      bubble.textContent = 'AMS Console is thinking';
+      drawerThread.appendChild(bubble);
+      scrollThreadToBottom();
+
+      var timer = window.setInterval(function () {
+        dots = (dots + 1) % 4;
+        bubble.textContent = 'AMS Console is thinking' + '.'.repeat(dots);
+        scrollThreadToBottom();
+      }, 350);
+
+      return { bubble: bubble, timer: timer };
+    }
+
+    function removeLoadingMessage(loadingState) {
+      if (!loadingState) return;
+      window.clearInterval(loadingState.timer);
+      if (loadingState.bubble && loadingState.bubble.parentNode) {
+        loadingState.bubble.parentNode.removeChild(loadingState.bubble);
+      }
     }
 
     function fallbackReply(text) {
@@ -177,8 +223,22 @@
       if (!text) return;
       openDrawer();
       addMessage('user', text);
-      var reply = directReply || await fetchLiveReply(text);
-      addMessage('assistant', reply);
+
+      var loadingState = null;
+      if (!directReply) {
+        setConsoleBusy(true);
+        loadingState = addLoadingMessage();
+      }
+
+      try {
+        var reply = directReply || await fetchLiveReply(text);
+        removeLoadingMessage(loadingState);
+        addMessage('assistant', reply);
+      } finally {
+        removeLoadingMessage(loadingState);
+        setConsoleBusy(false);
+        drawerField.focus();
+      }
     }
 
     openButtons.forEach(function (button) {
