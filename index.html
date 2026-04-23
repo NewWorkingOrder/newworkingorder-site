@@ -38,7 +38,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:radial-gradient(circle at 10% 18%, rgba(184,155,97,.14), transparent 28%), radial-gradient(circle at 90% 78%, rgba(14,16,18,.1), transparent 32%);
+      background:radial-gradient(circle at 12% 18%, rgba(184,155,97,.14), transparent 28%), radial-gradient(circle at 92% 78%, rgba(14,16,18,.1), transparent 34%);
       pointer-events:none;
     }
 
@@ -52,7 +52,7 @@
       margin:0 auto;
     }
 
-    .console-window{
+    .console-launch{
       position:relative;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.1);
@@ -61,43 +61,48 @@
       box-shadow:0 0 0 1px rgba(255,255,255,.03) inset,0 30px 74px rgba(0,0,0,.22);
     }
 
-    .console-window::before{
+    .console-launch::before{
       content:"";
       position:absolute;
       inset:0;
       background-image:linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px);
       background-size:42px 42px;
       opacity:.22;
-      mask-image:linear-gradient(180deg, rgba(0,0,0,.6), transparent 84%);
+      mask-image:linear-gradient(180deg, rgba(0,0,0,.72), transparent 86%);
       pointer-events:none;
     }
 
-    .console-window::after{
+    .console-launch::after{
       content:"";
       position:absolute;
       inset:0;
-      background:radial-gradient(circle at top right, rgba(184,155,97,.12), transparent 26%), radial-gradient(circle at bottom left, rgba(184,155,97,.08), transparent 22%);
+      background:radial-gradient(circle at top right, rgba(184,155,97,.14), transparent 28%), radial-gradient(circle at bottom left, rgba(184,155,97,.08), transparent 24%);
       pointer-events:none;
     }
 
-    .console-header{
+    .console-launch-head,
+    .console-launch-body{
       position:relative;
       z-index:1;
+    }
+
+    .console-launch-head{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
-      gap:20px;
-      padding:18px 22px;
+      gap:24px;
+      padding:24px 28px 22px;
       border-bottom:1px solid rgba(255,255,255,.08);
       background:linear-gradient(90deg, rgba(255,255,255,.03) 0%, rgba(255,255,255,.01) 100%);
     }
 
-    .console-header-copy{
-      display:grid;
-      gap:4px;
+    .console-head-copy{
+      max-width:42rem;
     }
 
-    .console-header-copy strong{
+    .console-head-copy strong{
+      display:block;
+      margin-bottom:10px;
       font-size:.84rem;
       line-height:1;
       letter-spacing:.18em;
@@ -105,99 +110,43 @@
       color:var(--text-strong);
     }
 
-    .console-header-copy span{
-      font-size:.75rem;
+    .console-head-copy p{
+      margin:0;
+      color:rgba(245,239,228,.86);
+      font-size:1.02rem;
+      line-height:1.7;
+    }
+
+    .console-open-button,
+    .console-send-button{
+      min-height:52px;
+      padding:0 22px;
+      border:1px solid transparent;
+      background:var(--accent);
+      color:var(--text-dark);
+      font-size:.74rem;
+      font-weight:800;
       letter-spacing:.16em;
       text-transform:uppercase;
-      color:rgba(236,230,218,.5);
+      white-space:nowrap;
     }
 
-    .console-header-mark{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:44px;
-      height:44px;
-      border:1px solid rgba(255,255,255,.14);
-      color:var(--accent);
-      font-size:.72rem;
-      font-weight:700;
-      letter-spacing:.2em;
-      text-transform:uppercase;
-      flex-shrink:0;
-      background:rgba(255,255,255,.02);
+    .console-open-button:hover,
+    .console-open-button:focus-visible,
+    .console-send-button:hover,
+    .console-send-button:focus-visible{
+      background:var(--accent-soft);
     }
 
-    .console-body{
-      position:relative;
-      z-index:1;
-      padding:22px;
-    }
-
-    .console-intro{
-      margin-bottom:20px;
-      padding-bottom:18px;
-      border-bottom:1px solid rgba(255,255,255,.07);
-    }
-
-    .console-intro p{
-      margin:0;
-      max-width:46rem;
-      color:rgba(245,239,228,.86);
-      font-size:1rem;
-      line-height:1.68;
-    }
-
-    .console-transcript{
-      min-height:208px;
-      max-height:300px;
-      padding:24px;
-      overflow:auto;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.02);
-      backdrop-filter:blur(10px);
-    }
-
-    .console-message{
-      max-width:none;
-      margin:0;
-      padding:0;
-      border:none;
-      background:transparent;
-    }
-
-    .console-message + .console-message{
-      margin-top:22px;
-      padding-top:18px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-
-    .console-message-user{
-      justify-self:auto;
-    }
-
-    .console-role{
-      margin-bottom:8px;
-      font-size:.7rem;
-      font-weight:700;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--accent);
-    }
-
-    .console-message p{
-      margin:0;
-      line-height:1.82;
-      color:rgba(245,239,228,.88);
-      font-size:1.02rem;
-      max-width:54rem;
+    .console-launch-body{
+      padding:24px 28px 28px;
     }
 
     .console-prompt-grid{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      padding:18px 0 0;
+      margin-bottom:18px;
     }
 
     .console-prompt{
@@ -222,14 +171,15 @@
       transform:translateY(-1px);
     }
 
-    .console-input{
+    .console-launch-form{
       display:grid;
-      grid-template-columns:minmax(0,1fr) 128px;
+      grid-template-columns:minmax(0,1fr) auto auto;
       gap:12px;
-      padding-top:18px;
+      align-items:center;
     }
 
-    .console-input input{
+    .console-launch-form input,
+    .console-drawer-form input{
       width:100%;
       min-height:56px;
       padding:0 18px;
@@ -238,38 +188,177 @@
       color:var(--text-strong);
     }
 
-    .console-input input::placeholder{
+    .console-launch-form input::placeholder,
+    .console-drawer-form input::placeholder{
       color:rgba(236,230,218,.42);
     }
 
-    .console-input button{
-      min-height:56px;
-      padding:0 20px;
-      border:1px solid transparent;
-      background:var(--accent);
-      color:var(--text-dark);
+    .console-launch-note,
+    .console-drawer-note{
+      margin-top:14px;
+      color:rgba(236,230,218,.58);
+      font-size:.84rem;
+      line-height:1.72;
+    }
+
+    .console-launch-note a,
+    .console-drawer-note a{
+      color:var(--accent);
+    }
+
+    body.console-drawer-open{
+      overflow:hidden;
+    }
+
+    .console-drawer-backdrop{
+      position:fixed;
+      inset:0;
+      z-index:90;
+      background:rgba(0,0,0,.5);
+      backdrop-filter:blur(6px);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .24s ease;
+    }
+
+    .console-drawer-backdrop.is-open{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .console-drawer{
+      position:fixed;
+      top:0;
+      right:0;
+      z-index:100;
+      display:flex;
+      flex-direction:column;
+      width:min(520px,100vw);
+      height:100dvh;
+      border-left:1px solid rgba(255,255,255,.1);
+      background:linear-gradient(180deg, rgba(10,11,13,.995) 0%, rgba(5,6,7,.995) 100%);
+      color:var(--text-strong);
+      box-shadow:-28px 0 72px rgba(0,0,0,.34);
+      transform:translateX(100%);
+      transition:transform .28s ease;
+    }
+
+    .console-drawer.is-open{
+      transform:translateX(0);
+    }
+
+    .console-drawer::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:linear-gradient(rgba(255,255,255,.024) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.024) 1px, transparent 1px);
+      background-size:34px 34px;
+      opacity:.2;
+      pointer-events:none;
+    }
+
+    .console-drawer-header,
+    .console-drawer-body,
+    .console-drawer-footer{
+      position:relative;
+      z-index:1;
+      padding-left:24px;
+      padding-right:24px;
+    }
+
+    .console-drawer-header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      padding-top:24px;
+      padding-bottom:20px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .console-drawer-copy strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:.84rem;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--text-strong);
+    }
+
+    .console-drawer-copy span{
+      color:rgba(236,230,218,.54);
+      font-size:.78rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .console-drawer-close{
+      min-width:44px;
+      min-height:44px;
+      padding:0 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.02);
+      color:var(--text-strong);
       font-size:.74rem;
       font-weight:800;
       letter-spacing:.16em;
       text-transform:uppercase;
     }
 
-    .console-input button:hover,
-    .console-input button:focus-visible{
-      background:var(--accent-soft);
+    .console-drawer-body{
+      flex:1 1 auto;
+      padding-top:22px;
+      padding-bottom:22px;
+      overflow:hidden;
     }
 
-    .console-note{
-      padding-top:14px;
-      margin-top:16px;
-      border-top:1px solid rgba(255,255,255,.06);
-      color:rgba(236,230,218,.58);
-      font-size:.84rem;
-      line-height:1.72;
+    .console-transcript{
+      height:100%;
+      overflow:auto;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+      padding:22px;
     }
 
-    .console-note a{
-      color:var(--accent);
+    .console-thread{
+      display:grid;
+      gap:14px;
+      min-height:100%;
+      align-content:start;
+    }
+
+    .console-message{
+      max-width:84%;
+      padding:15px 17px;
+      border:1px solid rgba(255,255,255,.09);
+      line-height:1.76;
+      color:rgba(245,239,228,.9);
+    }
+
+    .console-message-assistant{
+      justify-self:start;
+      background:rgba(255,255,255,.03);
+    }
+
+    .console-message-user{
+      justify-self:end;
+      background:rgba(184,155,97,.12);
+      border-color:rgba(184,155,97,.22);
+    }
+
+    .console-drawer-footer{
+      padding-top:18px;
+      padding-bottom:24px;
+      border-top:1px solid rgba(255,255,255,.08);
+      background:rgba(5,6,7,.88);
+    }
+
+    .console-drawer-form{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:12px;
+      align-items:center;
     }
 
     @media (max-width:1180px){
@@ -277,7 +366,10 @@
     }
 
     @media (max-width:920px){
+      .console-launch-form{grid-template-columns:1fr}
       .console-prompt-grid{display:grid;grid-template-columns:1fr 1fr}
+      .console-open-button,
+      .console-send-button{width:100%}
     }
 
     @media (max-width:720px){
@@ -294,37 +386,26 @@
         padding-bottom:92px;
       }
 
-      .console-header,
-      .console-body{
+      .console-launch-head,
+      .console-launch-body,
+      .console-drawer-header,
+      .console-drawer-body,
+      .console-drawer-footer{
         padding-left:16px;
         padding-right:16px;
       }
 
-      .console-header{
-        gap:14px;
-      }
-
-      .console-transcript{
-        padding:18px;
-      }
-
-      .console-message p{
-        font-size:.96rem;
+      .console-launch-head{
+        flex-direction:column;
+        align-items:stretch;
       }
 
       .console-prompt-grid,
-      .console-input{
-        grid-template-columns:1fr;
-      }
-
-      .console-prompt{
-        width:100%;
-        justify-content:flex-start;
-      }
-
-      .console-input button{
-        width:100%;
-      }
+      .console-drawer-form{grid-template-columns:1fr}
+      .console-prompt{width:100%}
+      .console-message{max-width:90%}
+      .console-transcript{padding:16px}
+      .console-drawer{width:100vw}
     }
   </style>
 </head>
@@ -473,41 +554,57 @@
 
     <section class="section-light section-console">
       <div class="container console-shell">
-        <div class="console-window" data-console-window>
-          <div class="console-header">
-            <div class="console-header-copy">
+        <div class="console-launch">
+          <div class="console-launch-head">
+            <div class="console-head-copy">
               <strong>AMS Console</strong>
-              <span>Applied Method Systems</span>
-            </div>
-            <div class="console-header-mark">AMS</div>
-          </div>
-          <div class="console-body">
-            <div class="console-intro">
               <p>Ask about workflow, handoffs, quoting, tools, or local AI architecture.</p>
             </div>
-            <div class="console-transcript" id="ams-console-output" aria-live="polite">
-              <div class="console-message console-message-assistant">
-                <div class="console-role">AMS Console</div>
-                <p>Welcome to Applied Method Systems. Ask about workflow friction, handoffs, quoting, process design, tools, or local AI architecture.</p>
-              </div>
-            </div>
+            <button class="console-open-button" type="button" data-console-open>Open Console</button>
+          </div>
+          <div class="console-launch-body">
             <div class="console-prompt-grid">
               <button class="console-prompt" type="button" data-console-prompt="ams">What does AMS actually do?</button>
               <button class="console-prompt" type="button" data-console-prompt="tools">What kinds of tools does AMS build?</button>
               <button class="console-prompt" type="button" data-console-prompt="architecture">What does local AI architecture mean here?</button>
               <button class="console-prompt" type="button" data-console-prompt="handoffs">How does AMS think about handoffs?</button>
             </div>
-            <form class="console-input" id="ams-console-form">
-              <label class="sr-only" for="ams-console-field">Ask AMS Console a question</label>
-              <input id="ams-console-field" name="message" type="text" autocomplete="off" placeholder="Ask about workflow, handoffs, quoting, tools, or architecture" />
-              <button type="submit">Send</button>
+            <form class="console-launch-form" id="ams-console-launch-form">
+              <label class="sr-only" for="ams-console-launch-field">Ask AMS Console a question</label>
+              <input id="ams-console-launch-field" name="message" type="text" autocomplete="off" placeholder="Type a question to open AMS Console" />
+              <button class="console-send-button" type="submit">Send</button>
+              <button class="console-open-button" type="button" data-console-open>Open</button>
             </form>
-            <div class="console-note">Need a direct conversation? <a href="contact.html">Contact AMS</a>.</div>
+            <div class="console-launch-note">Need a direct conversation? <a href="contact.html">Contact AMS</a>.</div>
           </div>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="console-drawer-backdrop" id="ams-console-backdrop"></div>
+  <aside class="console-drawer" id="ams-console-drawer" aria-hidden="true">
+    <div class="console-drawer-header">
+      <div class="console-drawer-copy">
+        <strong>AMS Console</strong>
+        <span>Applied Method Systems</span>
+      </div>
+      <button class="console-drawer-close" type="button" data-console-close>Close</button>
+    </div>
+    <div class="console-drawer-body">
+      <div class="console-transcript" id="ams-console-output" aria-live="polite">
+        <div class="console-thread" id="ams-console-thread"></div>
+      </div>
+    </div>
+    <div class="console-drawer-footer">
+      <form class="console-drawer-form" id="ams-console-drawer-form">
+        <label class="sr-only" for="ams-console-drawer-field">Continue the AMS Console conversation</label>
+        <input id="ams-console-drawer-field" name="message" type="text" autocomplete="off" placeholder="Ask the next question" />
+        <button class="console-send-button" type="submit">Send</button>
+      </form>
+      <div class="console-drawer-note">Need a direct conversation? <a href="contact.html">Contact AMS</a>.</div>
+    </div>
+  </aside>
 
   <footer class="site-footer">
     <div class="container footer-shell">
