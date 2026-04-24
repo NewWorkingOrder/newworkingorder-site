@@ -19,12 +19,12 @@
     .flow-grid .mini-card{padding:26px}
     .flow-grid .mini-card h3{max-width:none}
 
-    .hero-home .hero-shell{padding-bottom:112px}
-    .hero-home .hero-grid{align-items:end;grid-template-columns:minmax(760px,840px) minmax(360px,460px);justify-content:space-between;gap:72px}
-    .hero-home .hero-copy{max-width:840px}
-    .hero-home .hero-copy h1{max-width:none;margin:18px 0 20px;font-size:clamp(5.6rem,7.15vw,7.45rem);line-height:.92;letter-spacing:-.06em;word-spacing:.015em}
-    .hero-home .hero-copy h1 span{display:block}
-    .hero-home .hero-copy h1 .hero-llc-line{margin-top:.2em;font-size:.6em;letter-spacing:-.035em}
+    .hero-home .container{width:min(calc(100% - 72px),1440px)}
+    .hero-home .hero-shell{padding-bottom:104px}
+    .hero-home .hero-grid{align-items:end;grid-template-columns:minmax(620px,740px) minmax(380px,460px);justify-content:space-between;gap:84px}
+    .hero-home .hero-copy{max-width:740px}
+    .hero-home .hero-copy h1{max-width:740px;margin:18px 0 22px;font-size:clamp(4.9rem,6.45vw,6.85rem);line-height:.96;letter-spacing:-.047em;word-spacing:.015em;text-wrap:balance}
+    .hero-home .hero-copy h1 span{display:block;white-space:nowrap}
     .hero-home .hero-copy .lead{max-width:42rem}
     .hero-home .hero-copy .long-lead{max-width:43rem}
     .hero-home .hero-facts{width:min(100%,460px);max-width:460px;justify-self:end;align-self:end;margin-top:86px}
@@ -37,9 +37,9 @@
     }
 
     .featured-console{
-      margin-top:96px;
-      padding-top:56px;
-      padding-bottom:182px;
+      margin-top:0;
+      padding-top:132px;
+      padding-bottom:142px;
     }
 
     .featured-console .console-shell{max-width:1180px}
@@ -397,21 +397,21 @@
 
     @media (max-width:1180px){
       .tier-grid,.flow-grid,.tool-grid-2x2{grid-template-columns:1fr}
+      .hero-home .container{width:min(calc(100% - 56px),var(--max-width))}
       .hero-home .hero-shell{padding-bottom:86px}
       .hero-home .hero-grid{grid-template-columns:1fr;gap:44px}
       .hero-home .hero-copy{max-width:100%}
-      .hero-home .hero-copy h1{font-size:clamp(4.6rem,9.2vw,6.4rem)}
+      .hero-home .hero-copy h1{max-width:760px;font-size:clamp(4.2rem,8.4vw,6.1rem)}
       .hero-home .hero-facts{margin-top:0;max-width:none;width:100%}
     }
 
     @media (max-width:920px){
-      .featured-console{margin-top:64px;padding-top:40px;padding-bottom:146px}
+      .featured-console{padding-top:84px;padding-bottom:116px}
       .console-launch-form{grid-template-columns:1fr}
       .console-prompt-grid{display:grid;grid-template-columns:1fr 1fr}
       .console-open-button,
       .console-send-button{width:100%}
-      .hero-home .hero-copy h1{font-size:clamp(4.2rem,10vw,5.8rem);margin-bottom:18px}
-      .hero-home .hero-copy h1 .hero-llc-line{font-size:.62em;margin-top:.18em}
+      .hero-home .hero-copy h1{font-size:clamp(3.9rem,9vw,5.5rem);margin-bottom:18px}
     }
 
     @media (max-width:720px){
@@ -428,7 +428,7 @@
         padding-bottom:92px;
       }
 
-      .featured-console{margin-top:44px;padding-top:28px;padding-bottom:120px}
+      .featured-console{padding-top:58px;padding-bottom:90px}
 
       .console-launch-head,
       .console-launch-body,
@@ -491,7 +491,7 @@
         <div class="hero-grid">
           <div class="hero-copy">
             <div class="kicker">Expert-led process improvement, specialized tools, and local AI for manufacturing teams</div>
-            <h1><span>Applied Method Systems</span><span class="hero-llc-line">LLC</span></h1>
+            <h1><span>Applied Method</span><span>Systems LLC</span></h1>
             <div class="descriptor">Industrial, Manufacturing &amp; Technical Sales Solutions</div>
             <p class="lead">AMS helps manufacturers improve technical, operational, and equipment purchasing decisions through expert-led process improvement, workflow design, local AI systems, and specialized tools designed for business needs.</p>
             <p class="long-lead">AMS is built on years of direct exposure to manufacturing environments and conversations with engineers, sales teams, service teams, operations leaders, and decision-makers across dozens of industries. The starting point is understanding where work slows down, where handoffs weaken, where decisions stall, and where the right tools are missing.</p>
