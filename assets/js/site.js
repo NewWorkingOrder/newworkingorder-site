@@ -271,8 +271,7 @@
 
     promptButtons.forEach(function (button) {
       button.addEventListener('click', function () {
-        var key = button.getAttribute('data-console-prompt') || '';
-        handleMessage(button.textContent.trim(), cannedResponses[key] || null);
+        handleMessage(button.textContent.trim());
       });
     });
 
