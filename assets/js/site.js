@@ -70,6 +70,7 @@
   var openButtons = document.querySelectorAll('[data-console-open]');
   var closeButtons = document.querySelectorAll('[data-console-close]');
   var promptButtons = document.querySelectorAll('.console-prompt');
+  var liveConsoleEndpoint = 'https://console-api.newworkingorder.com/chat';
 
   if (drawer && drawerBackdrop && drawerThread && drawerForm && drawerField && launchForm && launchField) {
     var cannedResponses = {
@@ -184,9 +185,15 @@
     }
 
     async function fetchLiveReply(text) {
+      if (!liveConsoleEndpoint) {
+        return fallbackReply(text);
+      }
+
       try {
-        var response = await fetch('/api/chat', {
+        var response = await fetch(liveConsoleEndpoint, {
           method: 'POST',
+          mode: 'cors',
+          cache: 'no-store',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: text })
         });
