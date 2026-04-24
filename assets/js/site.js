@@ -60,6 +60,43 @@
     attemptPlay();
   });
 
+  function applyHomepagePolish() {
+    var isHomepage = window.location.pathname === '/' || /index\.html?$/.test(window.location.pathname);
+    if (!isHomepage) return;
+
+    var heroTitle = document.querySelector('.hero-home .hero-copy h1');
+    if (heroTitle) {
+      heroTitle.innerHTML = '<span>Applied</span><span>Method</span><span>Systems</span><span class="hero-llc">LLC</span>';
+    }
+
+    var quoteTitle = document.querySelector('.section-dark .quote-block h2');
+    if (quoteTitle) {
+      quoteTitle.textContent = 'Local AI should support the work, or it can lead the conversation when the business need points there.';
+    }
+
+    var featuredConsole = document.querySelector('.featured-console');
+    if (featuredConsole) {
+      featuredConsole.style.marginTop = window.innerWidth <= 720 ? '10px' : (window.innerWidth <= 920 ? '18px' : '24px');
+      featuredConsole.style.paddingTop = '8px';
+    }
+
+    if (!document.getElementById('ams-homepage-polish')) {
+      var style = document.createElement('style');
+      style.id = 'ams-homepage-polish';
+      style.textContent = [
+        '.hero-home .hero-copy h1{max-width:none;line-height:.92;letter-spacing:-.05em;word-spacing:.03em;}',
+        '.hero-home .hero-copy h1 span{display:block;}',
+        '.hero-home .hero-copy h1 .hero-llc{margin-top:.05em;letter-spacing:-.04em;}',
+        '.featured-console{padding-bottom:88px;}',
+        '@media (max-width:720px){.hero-home .hero-copy h1{line-height:.93;letter-spacing:-.04em;word-spacing:.02em;}.featured-console{padding-bottom:72px;}}'
+      ].join('');
+      document.head.appendChild(style);
+    }
+  }
+
+  applyHomepagePolish();
+  window.addEventListener('resize', applyHomepagePolish);
+
   var drawer = document.getElementById('ams-console-drawer');
   var drawerBackdrop = document.getElementById('ams-console-backdrop');
   var drawerThread = document.getElementById('ams-console-thread');
