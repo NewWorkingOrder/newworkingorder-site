@@ -19,13 +19,15 @@
     .flow-grid .mini-card{padding:26px}
     .flow-grid .mini-card h3{max-width:none}
 
-    .hero-home .hero-copy h1{
-      max-width:8.35ch;
-      font-size:6.18rem;
-      line-height:.94;
-      letter-spacing:-.05em;
-      word-spacing:.03em;
-    }
+    .hero-home .hero-shell{padding-bottom:112px}
+    .hero-home .hero-grid{align-items:end;grid-template-columns:minmax(760px,840px) minmax(360px,460px);justify-content:space-between;gap:72px}
+    .hero-home .hero-copy{max-width:840px}
+    .hero-home .hero-copy h1{max-width:none;margin:18px 0 20px;font-size:clamp(5.6rem,7.15vw,7.45rem);line-height:.92;letter-spacing:-.06em;word-spacing:.015em}
+    .hero-home .hero-copy h1 span{display:block}
+    .hero-home .hero-copy h1 .hero-llc-line{margin-top:.2em;font-size:.6em;letter-spacing:-.035em}
+    .hero-home .hero-copy .lead{max-width:42rem}
+    .hero-home .hero-copy .long-lead{max-width:43rem}
+    .hero-home .hero-facts{width:min(100%,460px);max-width:460px;justify-self:end;align-self:end;margin-top:86px}
 
     .section-console{
       position:relative;
@@ -35,10 +37,13 @@
     }
 
     .featured-console{
-      margin-top:-44px;
-      padding-top:0;
-      padding-bottom:88px;
+      margin-top:96px;
+      padding-top:56px;
+      padding-bottom:182px;
     }
+
+    .featured-console .console-shell{max-width:1180px}
+    .featured-console .console-launch{max-width:1120px;margin-left:auto;margin-right:auto}
 
     .section-console::before{
       content:"";
@@ -392,22 +397,29 @@
 
     @media (max-width:1180px){
       .tier-grid,.flow-grid,.tool-grid-2x2{grid-template-columns:1fr}
+      .hero-home .hero-shell{padding-bottom:86px}
+      .hero-home .hero-grid{grid-template-columns:1fr;gap:44px}
+      .hero-home .hero-copy{max-width:100%}
+      .hero-home .hero-copy h1{font-size:clamp(4.6rem,9.2vw,6.4rem)}
+      .hero-home .hero-facts{margin-top:0;max-width:none;width:100%}
     }
 
     @media (max-width:920px){
-      .featured-console{margin-top:-24px}
+      .featured-console{margin-top:64px;padding-top:40px;padding-bottom:146px}
       .console-launch-form{grid-template-columns:1fr}
       .console-prompt-grid{display:grid;grid-template-columns:1fr 1fr}
       .console-open-button,
       .console-send-button{width:100%}
+      .hero-home .hero-copy h1{font-size:clamp(4.2rem,10vw,5.8rem);margin-bottom:18px}
+      .hero-home .hero-copy h1 .hero-llc-line{font-size:.62em;margin-top:.18em}
     }
 
     @media (max-width:720px){
       .hero-home .hero-copy h1{
-        max-width:8.5ch;
-        font-size:clamp(4rem,9vw,6rem);
+        max-width:none;
+        font-size:clamp(3.4rem,12vw,4.8rem);
         line-height:.95;
-        letter-spacing:-.04em;
+        letter-spacing:-.048em;
         word-spacing:.02em;
       }
 
@@ -416,7 +428,7 @@
         padding-bottom:92px;
       }
 
-      .featured-console{margin-top:-14px;padding-bottom:72px}
+      .featured-console{margin-top:44px;padding-top:28px;padding-bottom:120px}
 
       .console-launch-head,
       .console-launch-body,
@@ -479,7 +491,7 @@
         <div class="hero-grid">
           <div class="hero-copy">
             <div class="kicker">Expert-led process improvement, specialized tools, and local AI for manufacturing teams</div>
-            <h1>Applied Method Systems LLC</h1>
+            <h1><span>Applied Method Systems</span><span class="hero-llc-line">LLC</span></h1>
             <div class="descriptor">Industrial, Manufacturing &amp; Technical Sales Solutions</div>
             <p class="lead">AMS helps manufacturers improve technical, operational, and equipment purchasing decisions through expert-led process improvement, workflow design, local AI systems, and specialized tools designed for business needs.</p>
             <p class="long-lead">AMS is built on years of direct exposure to manufacturing environments and conversations with engineers, sales teams, service teams, operations leaders, and decision-makers across dozens of industries. The starting point is understanding where work slows down, where handoffs weaken, where decisions stall, and where the right tools are missing.</p>
@@ -588,7 +600,7 @@
         </div>
         <div>
           <div class="quote-block">
-            <h2>Local AI should support the work, not lead the conversation.</h2>
+            <h2>Local AI should support the work, or it can lead the conversation when the business need points there.</h2>
             <p>AMS brings process improvement, specialized tools, local AI integration, connected workflows, and broader operating support together in the combination that best fits the business need.</p>
             <p>That may mean one focused solution. It may mean several layers working together. The objective is solving the problem in a way the business can carry forward.</p>
           </div>
