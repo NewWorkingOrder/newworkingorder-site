@@ -66,7 +66,7 @@
 
     var heroTitle = document.querySelector('.hero-home .hero-copy h1');
     if (heroTitle) {
-      heroTitle.innerHTML = '<span>Applied</span><span>Method</span><span>Systems</span><span class="hero-llc">LLC</span>';
+      heroTitle.innerHTML = '<span>Applied Method</span><span>Systems LLC</span>';
     }
 
     var quoteTitle = document.querySelector('.section-dark .quote-block h2');
@@ -76,19 +76,33 @@
 
     var featuredConsole = document.querySelector('.featured-console');
     if (featuredConsole) {
-      featuredConsole.style.marginTop = window.innerWidth <= 720 ? '10px' : (window.innerWidth <= 920 ? '18px' : '24px');
-      featuredConsole.style.paddingTop = '8px';
+      if (window.innerWidth <= 720) {
+        featuredConsole.style.marginTop = '34px';
+        featuredConsole.style.paddingTop = '22px';
+        featuredConsole.style.paddingBottom = '110px';
+      } else if (window.innerWidth <= 920) {
+        featuredConsole.style.marginTop = '48px';
+        featuredConsole.style.paddingTop = '26px';
+        featuredConsole.style.paddingBottom = '124px';
+      } else {
+        featuredConsole.style.marginTop = '72px';
+        featuredConsole.style.paddingTop = '34px';
+        featuredConsole.style.paddingBottom = '150px';
+      }
     }
 
     if (!document.getElementById('ams-homepage-polish')) {
       var style = document.createElement('style');
       style.id = 'ams-homepage-polish';
       style.textContent = [
-        '.hero-home .hero-copy h1{max-width:none;line-height:.92;letter-spacing:-.05em;word-spacing:.03em;}',
+        '.hero-home .hero-copy h1{max-width:8.9ch;font-size:clamp(4.8rem,7.8vw,7rem);line-height:.9;letter-spacing:-.055em;word-spacing:.02em;margin-bottom:26px;}',
         '.hero-home .hero-copy h1 span{display:block;}',
-        '.hero-home .hero-copy h1 .hero-llc{margin-top:.05em;letter-spacing:-.04em;}',
-        '.featured-console{padding-bottom:88px;}',
-        '@media (max-width:720px){.hero-home .hero-copy h1{line-height:.93;letter-spacing:-.04em;word-spacing:.02em;}.featured-console{padding-bottom:72px;}}'
+        '.hero-home .hero-copy h1 span + span{margin-top:.12em;}',
+        '.hero-home .hero-copy .descriptor{margin-top:18px;}',
+        '.featured-console .console-launch{max-width:1120px;margin-left:auto;margin-right:auto;}',
+        '.featured-console + .section-stone{padding-top:108px;}',
+        '@media (max-width:920px){.hero-home .hero-copy h1{max-width:9.4ch;font-size:clamp(4.2rem,9vw,6.1rem);margin-bottom:22px;}.featured-console + .section-stone{padding-top:92px;}}',
+        '@media (max-width:720px){.hero-home .hero-copy h1{max-width:9.8ch;font-size:clamp(3.7rem,11vw,5.2rem);line-height:.92;letter-spacing:-.05em;margin-bottom:18px;}.hero-home .hero-copy h1 span + span{margin-top:.14em;}.featured-console + .section-stone{padding-top:76px;}}'
       ].join('');
       document.head.appendChild(style);
     }
@@ -110,10 +124,10 @@
 
   if (drawer && drawerBackdrop && drawerThread && drawerForm && drawerField && launchForm && launchField) {
     var cannedResponses = {
-      ams: 'Applied Method Systems helps manufacturers improve technical, operational, and equipment purchasing decisions through expert-led process design built through discovery and executed through custom AI-enabled workflow apps.',
-      tools: 'AMS builds focused tools such as configuration and quote apps, workflow and handoff apps, shared account context tools, and department assistants or local AI tools. The common thread is reducing friction, compressing time, reducing errors, and improving execution where the work actually breaks down.',
-      architecture: 'AMS uses a staged local architecture path. That means starting with focused tools first, then connected workflows, then department intelligence, and shared company memory only when the operation is ready for that level of control.',
-      handoffs: 'AMS focuses heavily on the moments where information degrades between sales, service, engineering, operations, and purchasing. The goal is tighter handoffs, fewer avoidable touches, and cleaner execution across departments.'
+      ams: 'Applied Method Systems helps manufacturers improve technical, operational, and equipment purchasing decisions through expert-led process improvement, workflow design, local AI systems, and specialized tools designed to support business needs.',
+      tools: 'AMS builds specialized tools for quoting, configuration, handoffs, coordination, and other parts of the business that need better support. Depending on the situation, AMS may also build local AI support, connected workflows, or broader shared-context systems.',
+      architecture: 'AMS can start with a specialized tool, a workflow problem, department support, local AI integration, or a broader shared-context build. More than one layer can be implemented at the same time.',
+      handoffs: 'AMS focuses heavily on the points where information weakens between sales, service, engineering, operations, and purchasing. The goal is tighter handoffs, better support, and stronger execution across departments.'
     };
 
     var formButtons = [];
@@ -197,11 +211,11 @@
         return cannedResponses.tools;
       }
 
-      if (normalized.indexOf('architecture') !== -1 || normalized.indexOf('local ai') !== -1 || normalized.indexOf('company memory') !== -1 || normalized.indexOf('department intelligence') !== -1) {
+      if (normalized.indexOf('architecture') !== -1 || normalized.indexOf('local ai') !== -1 || normalized.indexOf('company memory') !== -1 || normalized.indexOf('department support') !== -1) {
         return cannedResponses.architecture;
       }
 
-      if (normalized.indexOf('handoff') !== -1 || normalized.indexOf('workflow') !== -1 || normalized.indexOf('friction') !== -1 || normalized.indexOf('process') !== -1) {
+      if (normalized.indexOf('handoff') !== -1 || normalized.indexOf('workflow') !== -1 || normalized.indexOf('process') !== -1) {
         return cannedResponses.handoffs;
       }
 
@@ -210,7 +224,7 @@
       }
 
       if (normalized.indexOf('contact') !== -1 || normalized.indexOf('email') !== -1 || normalized.indexOf('phone') !== -1) {
-        return 'For a direct discussion, use the Contact page or email adam@newworkingorder.com with the workflow, friction point, or decision problem that is getting delayed or degraded.';
+        return 'For a direct discussion, use the Contact page or email adam@newworkingorder.com with the workflow, support gap, or decision problem that is getting delayed or weakened.';
       }
 
       if (compact.length < 8) {
