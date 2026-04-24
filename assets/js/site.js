@@ -73,13 +73,6 @@
   var liveConsoleEndpoint = 'https://console-api.newworkingorder.com/chat';
 
   if (drawer && drawerBackdrop && drawerThread && drawerForm && drawerField && launchForm && launchField) {
-    var cannedResponses = {
-      ams: 'Applied Method Systems helps manufacturers improve technical, operational, and equipment purchasing decisions through expert-led process improvement, workflow design, local AI systems, and specialized tools designed to support business needs.',
-      tools: 'AMS builds specialized tools for quoting, configuration, handoffs, coordination, and other parts of the business that need better support. Depending on the situation, AMS may also build local AI support, connected workflows, or broader shared-context systems.',
-      architecture: 'AMS can start with a specialized tool, a workflow problem, department support, local AI integration, or a broader shared-context build. More than one layer can be implemented at the same time.',
-      handoffs: 'AMS focuses heavily on the points where information weakens between sales, service, engineering, operations, and purchasing. The goal is tighter handoffs, better support, and stronger execution across departments.'
-    };
-
     var formButtons = [];
     var drawerSubmit = drawerForm.querySelector('button[type="submit"]');
     var launchSubmit = launchForm.querySelector('button[type="submit"]');
@@ -128,13 +121,13 @@
       bubble.setAttribute('role', 'status');
       bubble.setAttribute('aria-live', 'polite');
       bubble.style.opacity = '0.92';
-      bubble.textContent = 'AMS Console is thinking';
+      bubble.textContent = 'Ashby is thinking';
       drawerThread.appendChild(bubble);
       scrollThreadToBottom();
 
       var timer = window.setInterval(function () {
         dots = (dots + 1) % 4;
-        bubble.textContent = 'AMS Console is thinking' + '.'.repeat(dots);
+        bubble.textContent = 'Ashby is thinking' + '.'.repeat(dots);
         scrollThreadToBottom();
       }, 350);
 
@@ -149,44 +142,13 @@
       }
     }
 
-    function fallbackReply(text) {
-      var normalized = text.toLowerCase();
-      var compact = normalized.replace(/[^a-z0-9\s]/g, '').trim();
-
-      if (normalized.indexOf('what does ams') !== -1 || normalized.indexOf('what do you do') !== -1 || normalized.indexOf('applied method systems') !== -1) {
-        return cannedResponses.ams;
-      }
-
-      if (normalized.indexOf('tool') !== -1 || normalized.indexOf('quote') !== -1 || normalized.indexOf('configuration') !== -1) {
-        return cannedResponses.tools;
-      }
-
-      if (normalized.indexOf('architecture') !== -1 || normalized.indexOf('local ai') !== -1 || normalized.indexOf('company memory') !== -1 || normalized.indexOf('department support') !== -1) {
-        return cannedResponses.architecture;
-      }
-
-      if (normalized.indexOf('handoff') !== -1 || normalized.indexOf('workflow') !== -1 || normalized.indexOf('process') !== -1) {
-        return cannedResponses.handoffs;
-      }
-
-      if (normalized.indexOf('crm') !== -1 || normalized.indexOf('erp') !== -1) {
-        return 'AMS does not replace CRM or ERP. Those systems may still matter as systems of record, but AMS focuses on the working layer around the process.';
-      }
-
-      if (normalized.indexOf('contact') !== -1 || normalized.indexOf('email') !== -1 || normalized.indexOf('phone') !== -1) {
-        return 'For a direct discussion, use the Contact page or email adam@newworkingorder.com with the workflow, support gap, or decision problem that is getting delayed or weakened.';
-      }
-
-      if (compact.length < 8) {
-        return 'Try one of the prompts or ask a workflow question.';
-      }
-
-      return 'Ask about workflow, handoffs, quoting, tools, or local AI architecture.';
+    function fallbackReply() {
+      return 'Ashby is temporarily unavailable. Please try again shortly or contact AMS directly.';
     }
 
     async function fetchLiveReply(text) {
       if (!liveConsoleEndpoint) {
-        return fallbackReply(text);
+        return fallbackReply();
       }
 
       try {
@@ -201,7 +163,7 @@
         var raw = await response.text();
 
         if (!response.ok) {
-          throw new Error(raw || 'AMS Console backend unavailable');
+          throw new Error(raw || 'Ashby backend unavailable');
         }
 
         if (!raw) {
@@ -222,7 +184,8 @@
 
         throw new Error('Invalid response payload');
       } catch (error) {
-        return fallbackReply(text);
+        console.error('Ashby live response failed', error);
+        return fallbackReply();
       }
     }
 
