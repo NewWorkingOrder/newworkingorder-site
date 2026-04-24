@@ -60,57 +60,6 @@
     attemptPlay();
   });
 
-  function applyHomepagePolish() {
-    var isHomepage = window.location.pathname === '/' || /index\.html?$/.test(window.location.pathname);
-    if (!isHomepage) return;
-
-    var heroTitle = document.querySelector('.hero-home .hero-copy h1');
-    if (heroTitle) {
-      heroTitle.innerHTML = '<span>Applied Method</span><span>Systems LLC</span>';
-    }
-
-    var quoteTitle = document.querySelector('.section-dark .quote-block h2');
-    if (quoteTitle) {
-      quoteTitle.textContent = 'Local AI should support the work, or it can lead the conversation when the business need points there.';
-    }
-
-    var featuredConsole = document.querySelector('.featured-console');
-    if (featuredConsole) {
-      if (window.innerWidth <= 720) {
-        featuredConsole.style.marginTop = '34px';
-        featuredConsole.style.paddingTop = '22px';
-        featuredConsole.style.paddingBottom = '110px';
-      } else if (window.innerWidth <= 920) {
-        featuredConsole.style.marginTop = '48px';
-        featuredConsole.style.paddingTop = '26px';
-        featuredConsole.style.paddingBottom = '124px';
-      } else {
-        featuredConsole.style.marginTop = '72px';
-        featuredConsole.style.paddingTop = '34px';
-        featuredConsole.style.paddingBottom = '150px';
-      }
-    }
-
-    if (!document.getElementById('ams-homepage-polish')) {
-      var style = document.createElement('style');
-      style.id = 'ams-homepage-polish';
-      style.textContent = [
-        '.hero-home .hero-copy h1{max-width:8.9ch;font-size:clamp(4.8rem,7.8vw,7rem);line-height:.9;letter-spacing:-.055em;word-spacing:.02em;margin-bottom:26px;}',
-        '.hero-home .hero-copy h1 span{display:block;}',
-        '.hero-home .hero-copy h1 span + span{margin-top:.12em;}',
-        '.hero-home .hero-copy .descriptor{margin-top:18px;}',
-        '.featured-console .console-launch{max-width:1120px;margin-left:auto;margin-right:auto;}',
-        '.featured-console + .section-stone{padding-top:108px;}',
-        '@media (max-width:920px){.hero-home .hero-copy h1{max-width:9.4ch;font-size:clamp(4.2rem,9vw,6.1rem);margin-bottom:22px;}.featured-console + .section-stone{padding-top:92px;}}',
-        '@media (max-width:720px){.hero-home .hero-copy h1{max-width:9.8ch;font-size:clamp(3.7rem,11vw,5.2rem);line-height:.92;letter-spacing:-.05em;margin-bottom:18px;}.hero-home .hero-copy h1 span + span{margin-top:.14em;}.featured-console + .section-stone{padding-top:76px;}}'
-      ].join('');
-      document.head.appendChild(style);
-    }
-  }
-
-  applyHomepagePolish();
-  window.addEventListener('resize', applyHomepagePolish);
-
   var drawer = document.getElementById('ams-console-drawer');
   var drawerBackdrop = document.getElementById('ams-console-backdrop');
   var drawerThread = document.getElementById('ams-console-thread');
